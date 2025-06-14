@@ -1,13 +1,5 @@
 <script>
-  import { SignInButton, SignUpButton, UserButton } from 'svelte-clerk';
-  import { page } from '$app/stores';
-  
-  export let session = null;
-  export let user = null;
-  
-  function isActive(path) {
-    return $page.url.pathname === path ? 'text-[#00f7ff]' : 'text-gray-300 hover:text-white';
-  }
+  import { UserButton } from 'svelte-clerk';
 </script>
 
 <header class="bg-[#1e1e1e]">
@@ -18,21 +10,8 @@
       </div>
       
       <div class="flex items-center space-x-4">
-        {#if !session}
-          <SignInButton mode="modal">
-            <button class="px-4 py-2 text-sm font-medium text-white bg-[#00f7ff] rounded-md hover:bg-[#00e6ee] transition-colors">
-              Iniciar sesión
-            </button>
-          </SignInButton>
-          <SignUpButton mode="modal">
-            <button class="px-4 py-2 text-sm font-medium text-[#00f7ff] border border-[#00f7ff] rounded-md hover:bg-[#00f7ff]/10 transition-colors">
-              Registrarse
-            </button>
-          </SignUpButton>
-        {:else}
-        <!-- TODO: Al cerrar sesión podría ir a la landing (proyecto externo) -->
+          <!-- TODO: Al cerrar sesión podría ir a la landing (proyecto externo) -->
           <UserButton afterSignOutUrl="/" />
-        {/if}
       </div>
     </div>
   </div>
