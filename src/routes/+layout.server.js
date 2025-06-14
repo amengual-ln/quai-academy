@@ -1,6 +1,9 @@
 export function load({ locals }) {
+    const serializableSession = locals.session ? {
+        userId: locals.session.userId,
+    } : null;
+
     return {
-        session: locals.session || null,
-        user: locals.user || null
+        session: serializableSession
     };
 }
